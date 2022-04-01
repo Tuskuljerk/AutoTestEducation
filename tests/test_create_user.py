@@ -5,7 +5,7 @@ import time
 
 
 class TestCreateUser:
-    def test_create_delete(self):
+    def test_create_user(self):
         data = {
             "username" : "tuskuljerkich",
             "firstName" : "Tuskul",
