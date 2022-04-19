@@ -8,12 +8,12 @@ class TestAuth:
             "password" : "qweasd123"
         }
 
-        login_response = requests.post("https://playground.learnqa.ru/api/user/login", data=auth_data)
-        print(login_response.headers)
-
         assert "auth_sid" in login_response.cookies, "There is no auth cookie in the response"
         assert "x-csrf-token" in login_response.headers, "There is no auth header in the response"
         assert "user_id" in login_response.json(), "There is no userId in the response"
+
+        login_response = requests.post("https://playground.learnqa.ru/api/user/login", data=auth_data)
+        print(login_response.headers)
 
         auth_sid = login_response.cookies.get("auth_sid")
         token = login_response.headers.get("x-csrf-token")
